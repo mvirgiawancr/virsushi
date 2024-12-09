@@ -111,81 +111,75 @@
                     @if ($cart)
                         @foreach ($cart as $id => $item)
                             <div class="flex items-center justify-between pb-4 border-b">
-                                <div class="flex items-center space-x-4">
-                                    <img src="data:image/jpeg;base64,{{ $item['image'] }}" alt="Menu item"
-                                        class="w-16 h-16 rounded-md object-cover" />
-                                    <div>
-                                        <h4 class="font-medium">{{ $item['name'] }}</h4>
-                                        <p class="text-sm text-gray-500">Rp
-                                            {{ number_format($item['price'], 0, ',', '.') }}</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-center space-x-4">
-                                    <div class="flex items-center space-x-2">
-                                        <form action="{{ route('cart.update', $id) }}" method="POST">
-                                            @csrf
-                                            <button type="submit" name="quantity" value="{{ $item['quantity'] - 1 }}"
-                                                class="w-6 h-6 rounded-full bg-gray-100 text-gray-600 hover:bg-red-100 hover:text-red-500"
-                                                {{ $item['quantity'] <= 1 ? 'disabled' : '' }}>-</button>
-                                        </form>
-                                        <span class="text-gray-600">{{ $item['quantity'] }}</span>
-                                        <form action="{{ route('cart.update', $id) }}" method="POST">
-                                            @csrf
-                                            <button type="submit" name="quantity" value="{{ $item['quantity'] + 1 }}"
-                                                class="w-6 h-6 rounded-full bg-gray-100 text-gray-600 hover:bg-red-100 hover:text-red-500">+</button>
-                                        </form>
-                                    </div>
-                                    <form action="{{ route('cart.remove', $id) }}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="text-red-500 hover:text-red-600">
-                                            <svg class="w-5 h-5" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                            </svg>
-                                        </button>
-                                    </form>
-                                </div>
+                                <h4 class="font-medium">{{ $item['name'] }}</h4>
+                                <p class="text-sm text-gray-500">Rp
+                                    {{ number_format($item['price'], 0, ',', '.') }}</p>
                             </div>
-                        @endforeach
-
-                        <!-- Total -->
-                        <div class="pt-4 border-t">
-                            @php
-                                $total = 0;
-                                foreach ($cart as $item) {
-                                    $total += $item['price'] * $item['quantity'];
-                                }
-                            @endphp
-                            <div class="flex justify-between mb-2">
-                                <span class="text-gray-600">Subtotal</span>
-                                <span class="font-medium">Rp {{ number_format($total, 0, ',', '.') }}</span>
-                            </div>
-                            <div class="flex justify-between mb-4">
-                                <span class="text-gray-600">Tax (10%)</span>
-                                <span class="font-medium">Rp {{ number_format($total * 0.1, 0, ',', '.') }}</span>
-                            </div>
-                            <div class="flex justify-between text-lg font-semibold">
-                                <span>Total</span>
-                                <span>Rp {{ number_format($total + $total * 0.1, 0, ',', '.') }}</span>
-                            </div>
-                        </div>
-
-                        <!-- Checkout Button -->
-                        <form action="{{ route('checkout') }}" method="post">
-                            @csrf
-                            <button
-                                class="w-full py-3 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors mt-4">
-                                Proceed to Checkout
-                            </button>
-                        </form>
-                    @else
-                        <p class="text-gray-500">Anda belum memiliki pesanan.</p>
-                    @endif
                 </div>
-
-
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <form action="{{ route('cart.update', $id) }}" method="POST">
+                            @csrf
+                            <button type="submit" name="quantity" value="{{ $item['quantity'] - 1 }}"
+                                class="w-6 h-6 rounded-full bg-gray-100 text-gray-600 hover:bg-red-100 hover:text-red-500"
+                                {{ $item['quantity'] <= 1 ? 'disabled' : '' }}>-</button>
+                        </form>
+                        <span class="text-gray-600">{{ $item['quantity'] }}</span>
+                        <form action="{{ route('cart.update', $id) }}" method="POST">
+                            @csrf
+                            <button type="submit" name="quantity" value="{{ $item['quantity'] + 1 }}"
+                                class="w-6 h-6 rounded-full bg-gray-100 text-gray-600 hover:bg-red-100 hover:text-red-500">+</button>
+                        </form>
+                    </div>
+                    <form action="{{ route('cart.remove', $id) }}" method="POST">
+                        @csrf
+                        <button type="submit" class="text-red-500 hover:text-red-600">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
             </div>
+            @endforeach
+
+            <!-- Total -->
+            <div class="pt-4 border-t">
+                @php
+                    $total = 0;
+                    foreach ($cart as $item) {
+                        $total += $item['price'] * $item['quantity'];
+                    }
+                @endphp
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-600">Subtotal</span>
+                    <span class="font-medium">Rp {{ number_format($total, 0, ',', '.') }}</span>
+                </div>
+                <div class="flex justify-between mb-4">
+                    <span class="text-gray-600">Tax (10%)</span>
+                    <span class="font-medium">Rp {{ number_format($total * 0.1, 0, ',', '.') }}</span>
+                </div>
+                <div class="flex justify-between text-lg font-semibold">
+                    <span>Total</span>
+                    <span>Rp {{ number_format($total + $total * 0.1, 0, ',', '.') }}</span>
+                </div>
+            </div>
+
+            <!-- Checkout Button -->
+            <form action="{{ route('checkout') }}" method="post">
+                @csrf
+                <button class="w-full py-3 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors mt-4">
+                    Proceed to Checkout
+                </button>
+            </form>
+        @else
+            <p class="text-gray-500">Anda belum memiliki pesanan.</p>
+            @endif
+        </div>
+
+
+        </div>
     </main>
 </body>
 
