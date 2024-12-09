@@ -94,10 +94,7 @@ return [
             'prefix' => '',
             'prefix_indexes' => true,
             'search_path' => 'public',
-            env('DB_SSLMODE', 'prefer'),
-            'options' => [
-                'endpoint' => 'ep-green-voice-a5f5qrwo'
-            ]
+            'sslmode' => 'prefer',
 
         ],
 
