@@ -2,30 +2,28 @@
     "version": 2,
     "functions": {
         "api/index.php": {
-            "runtime": "vercel-php@0.7.3"
+            "runtime": "vercel-php@0.6.0"
         }
     },
     "routes": [
         {
-            "src": "/images/(.)",
+            "src": "/images/(.*)",
             "dest": "/public/images/"
         },
         {
-            "src": "/(.)",
+            "src": "/(.*)",
             "dest": "/api/index.php"
         }
     ],
     "env": {
-        "APP_ENV": "production",
+        "APP_ENV": "development",
         "APP_DEBUG": "true",
-        "APP_URL": "https://virsushi.vercel.app",
-        "APP_KEY": "base64:TGaVaXwhWgjn9akhE4SCSIjGG/cQqvICUQ+PgLA3Bs0=",
+        "APP_URL": "https://example-atomik.vercel.app/",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
         "APP_PACKAGES_CACHE": "/tmp/packages.php",
         "APP_ROUTES_CACHE": "/tmp/routes.php",
         "APP_SERVICES_CACHE": "/tmp/services.php",
-        "ASSET_URL": "https://virsushi.vercel.app",
         "VIEW_COMPILED_PATH": "/tmp",
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
@@ -38,3 +36,4 @@
     },
     "outputDirectory": "public"
 }
+
