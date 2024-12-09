@@ -33,6 +33,7 @@
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie",
+        "VITE_MANIFEST": "/build/manifest.json",
         "FILESYSTEM_DISK": "public",
         "DB_CONNECTION": "mysql",
         "DB_HOST": "8rqt3.h.filess.io",
@@ -40,6 +41,7 @@
         "DB_DATABASE": "virsushi_orflowerby",
         "DB_USERNAME": "virsushi_orflowerby"
     },
+    "buildCommand": "npm run build",
     "outputDirectory": "public"
 }
 
