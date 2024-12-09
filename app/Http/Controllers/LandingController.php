@@ -3,13 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use Illuminate\Http\Request;
-
 class LandingController extends Controller
 {
+
+
     public function index()
     {
-        $product = Product::get();
-        return view('landingpage', compact('product'));
+        if (auth()->check()) {
+            if (auth()->user()->role == 'admin') {
+                return redirect()->route('admin.dashboard');
+            }
+            return redirect()->route('dashboard');
+        }
+        return view('landing', [
+            'product' => Product::all()
+        ]);
     }
 }
