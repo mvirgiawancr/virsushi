@@ -1,26 +1,31 @@
 {
     "version": 2,
-    "framework": null,
     "functions": {
-        "api/index.php": { "runtime": "vercel-php@0.6.0" }
+        "api/index.php": {
+            "runtime": "vercel-php@0.7.3"
+        }
     },
     "routes": [
-        { "src": "/build/(.*)", "dest": "/public/build/" },
-        { "src": "/(.*)", "dest": "/api/index.php" }
+        {
+            "src": "/images/(.)",
+            "dest": "/public/images/"
+        },
+        {
+            "src": "/(.)",
+            "dest": "/api/index.php"
+        }
     ],
-    "public": true,
-    "buildCommand": "vite build",
-    "outputDirectory": "public",
     "env": {
         "APP_ENV": "production",
-        "APP_DEBUG": "false",
-        "APP_URL": "https://yourproductionurl.com",
+        "APP_DEBUG": "true",
+        "APP_URL": "https://virsushi.vercel.app",
         "APP_KEY": "base64:TGaVaXwhWgjn9akhE4SCSIjGG/cQqvICUQ+PgLA3Bs0=",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
         "APP_PACKAGES_CACHE": "/tmp/packages.php",
         "APP_ROUTES_CACHE": "/tmp/routes.php",
         "APP_SERVICES_CACHE": "/tmp/services.php",
+        "ASSET_URL": "https://virsushi.vercel.app",
         "VIEW_COMPILED_PATH": "/tmp",
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
@@ -30,5 +35,6 @@
         "DB_PORT": "3306",
         "DB_DATABASE": "virsushi_orflowerby",
         "DB_USERNAME": "virsushi_orflowerby"
-    }
+    },
+    "outputDirectory": "public"
 }

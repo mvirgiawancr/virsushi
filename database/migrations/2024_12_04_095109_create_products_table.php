@@ -16,8 +16,8 @@ return new class extends Migration {
             price DECIMAL(10, 2),
             description TEXT,
             image LONGBLOB,
-            created_at TIMESTAMP,
-            updated_at TIMESTAMP
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )');
     }
 
