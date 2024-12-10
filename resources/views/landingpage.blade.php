@@ -150,6 +150,7 @@
             <span class="footer-title">Contact</span>
             <p>10122164</p>
             <p>Moch Virgiawan Caesar Ridollohi</p>
+            <p>IF 5</p>
         </div>
     </footer>
     <footer class="footer px-10 py-4 border-t bg-neutral text-neutral-content border-base-300">
