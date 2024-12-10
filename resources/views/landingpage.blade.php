@@ -148,10 +148,8 @@
         </div>
         <div>
             <span class="footer-title">Contact</span>
-            <p>Jl. Sushi Enak No. 123</p>
-            <p>Bandung, Indonesia</p>
-            <p>Tel: (021) 123-4567</p>
-            <p>Email: info@virsushi.com</p>
+            <p>10122164</p>
+            <p>Moch Virgiawan Caesar Ridollohi</p>
         </div>
     </footer>
     <footer class="footer px-10 py-4 border-t bg-neutral text-neutral-content border-base-300">
